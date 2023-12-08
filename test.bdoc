@@ -1,0 +1,15 @@
+= test
+
+== NAME
+test - (cheatsheet) .
+
+== SYNOPSIS
+test
+
+== DESCRIPTION
+<table> 4
+(|Numéro|Libellé|Extra|Trop|)
+(|1|des [[trucs]]|en plus|++|)
+(|2|des ((machins))|en moins|--|)
+(|3|des bidules|en sus|==|)
+</table>

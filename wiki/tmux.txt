@@ -1,0 +1,54 @@
+=====tmux=====
+
+====NAME    ====
+tmux  - (cheatsheet)
+
+====SYNOPSIS    ====
+
+<code>
+tmux ls
+tmux attach
+tmux new -s session_name
+</code>
+
+====DESCRIPTION    ====
+
+Ctrl-B + 
+
+===Window    ===
+
+<code>
+c     : create window
+,     : rename window
+0-9   : select window 0-9
+w     : select window from list
+
+&     : kill window
+</code>
+
+===Pane    ===
+
+<code>
+"     : split horizontal
+%     : split vertical
+→↓    : move to pane left, down ...
+q     : pane index
+t     : clock
+!     : promote to window
+{}    : swap pane prev next
+C-o   :
+M-o   : rotate pane
+spc   : rotate layout
+alt → : resize pane
+
+x     : kill pane
+</code>
+
+===Session    ===
+
+<code>
+$     : rename session
+()    : switch prev, next session
+d     : detach
+</code>
+

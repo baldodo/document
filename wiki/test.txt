@@ -1,0 +1,13 @@
+=====test=====
+
+====NAME    ====
+test - (cheatsheet) .
+
+====SYNOPSIS    ====
+test
+
+====DESCRIPTION    ====
+^^Numéro^Libellé^Extra^Trop^
+||1|des **trucs**|en plus|++|
+||2|des __machins__|en moins|--|
+||3|des bidules|en sus|==|

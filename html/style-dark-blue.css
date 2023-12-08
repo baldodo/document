@@ -1,0 +1,9 @@
+       * { font-family:Caladea,sans; color:#d0d0b0; background-color:#202020}
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top; border:0px  solid; border-collapse: collapse; }
+       th { border-bottom:1px solid #000; background-color:#003060; color:#ffffc0; padding:10px; text-align:left;}
+       td   { border-top:1px solid; border-bottom:1px solid #000; padding:10px; text-align:left; }
+       tr:nth-child(even) { background-color:#f0f0ff; }
+       tr:hover { background-color: grey; color:white;}
+       h1      { text-align: center; }

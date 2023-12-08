@@ -1,0 +1,67 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="style.css">
+<title>mc</title>
+</head>
+<body>
+<h1>mc</h1>
+<br/>
+<h2>NAME    </h2>
+<p>
+mc - (cheatsheet) .
+</p>
+<br/>
+<h2>SYNOPSIS    </h2>
+<p>
+Affiche le répertoire <u>dir1</u> à gauche et <u>dir2</u> à droite
+</p>
+<pre>
+mc [dir1] [dir2]
+</pre>
+<br/>
+<p>
+Affiche le répertoire distant (ssh) <u>/some/path</u> de la machine <u>host</u>
+</p>
+<pre>
+mc sh://user@host/some/path
+</pre>
+<br/>
+<h2>DESCRIPTION    </h2>
+<br/>
+<h3>Raccourcis    </h3>
+<br/>
+<pre>
+   Tab       : change de côté (gauche ←→ droite)
+   Insertion : sélectionne un fichier ou un répertoire
+   F7        : crée un répertoire
+   +         : sélectionne par motif (ex: *.doc)
+   Alt + .   : cache/révèle les fichiers cachés
+
+   F5        : copie du coté actif au coté passif
+   F6        : déplace/renomme du côté actif vers le côté passif
+   F8        : supprime
+
+   F3        : visualise un fichier
+   F4        : édite un fichier
+   F9        : sélectionne un menu
+   F10       : sort/quitte
+
+   Ctrl-x d  : compare le côté gauche au côté droit
+   Alt+i     : sélectionne le même répertoire sur l'autre côté
+</pre>
+<br/>
+<h3>Renommage par lot  </h3>
+<br/>
+<p>
+exemple:
+</p>
+<pre>
+taper "+" puis "*.csv"      => mc sélectionne tous les fichiers *.csv
+taper "F6" puis 
+    "*.csv" dans le premier champ
+    "*.xls" dans le second champ
+                            => renomme tous les fichiers CSV en XLS
+</pre>
+<br/>
+</body></html>

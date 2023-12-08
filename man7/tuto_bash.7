@@ -1,0 +1,104 @@
+.TH Tuto_bash "7" "2023-12-08" "baldo/document" "cheatsheet"
+.SH NAME
+.PP
+tuto_bash \- (cheatsheet) .
+.SH SYNOPSIS
+.PP
+tuto_bash
+.SH Déroulement
+
+.SS
+Prompt
+.PP
+Un élément souvent négligé le \fIprompt\fR du shell doit permettre à chaque instant:
+.PP
+\- de savoir quel login est utilisé (simple utilisateur, root, admin applicatif ...)
+.PP
+\- où on se trouve : machine et répertoire courant.
+.PP
+Il ne doit pas être trop imposant : pour peu qu'on soit profond dans l'arborescence des répertoires, qu'on ait un login à rallonge ou un hostname complet avec le domaine, on finit par ne plus avoir de place pour taper ses commandes.
+.PP
+Même si c'est affaire de goût, je préconise un prompt sur 2 lignes:
+.PP
+\- 1ère ligne : login@machine: path
+.PP
+\- 2ème ligne : le numéro de la commande en cours
+.EX
+PS1="\u@\h: \w\n(\!)\$>"
+pierre.dupont@ma_machine: /var/log/rsyslog/machine42/apache2
+(11)> ls \-l 
+.EE
+.PP
+Si on met le prompt sur une seule ligne on risque d'avoir un truc dans le genre de :
+.EX
+PS1="\u@\h: \w \$"
+pierre.dupont@ma_machine: /var/log/rsyslog/machine42/apache2 $ ls \-l
+.EE
+.PP
+On peut atténuer le problème via la variable PROMPT_DIRTRIM
+.EX
+PROMPT_DIRTRIM=2
+PS1="\u@\h: \w \$"
+pierre.dupont@ma_machine: .../machine42/apache2 $ ls \-l
+.EE
+.PP
+le répertoire courant est tronqué, mais ça peut être suffisant.
+.PP
+N'afficher que le dernière répertoire du path courant ne me parait pas exploitable.
+
+.SS
+Se
+.TS
+tab(|) allbox;
+l l .
+commande|ce que ça fait
+cd \- | revient au répertoire précédent
+push mon_dossier| sauve \fImon_dossier\fR dans la pile
+push|affiche la pile
+pushd ailleurs  | sauve le \fIrépertoire courant\fR et saute \fIailleurs\fR 
+popd            | revient au répertoire précédent dans la pile 
+pop 3           | retire le 3ème répertoire de la pile 
+pop             |affiche la pile
+dirs \-v         | affiche la pile 
+.TE
+.PP
+\fBpop\fR et \fBpush\fR sont des extensions/fonctions de mon cru. \fBpushd\fR et \fBpopd\fR sont des commandes internes de bash.
+.PP
+Pour voir la documentation complète de \fIpushd\fR et \fIpopd\fR, taper : 
+.EX
+$> help pushd
+$> help popd
+.EE
+.PP
+le code \fBsimplifié\fR de la commande push est celui\-ci :
+.EX
+push()
+{
+   if [ $# \-eq 0 ]
+      then dirs \-v; return
+   fi
+   local dest="$1"
+   if ! [ \-d "$dest" ]
+      then echo "$dest introuvable" > /dev/stderr
+      return
+   fi
+   pushd \-n "$(realpath "$dest")" > /dev/null
+   dirs \-v
+}
+.EE
+.PP
+celui de la commande pop est :
+.EX
+pop()
+{
+   if [ $# \-eq 0 ]
+      then dirs \-v; return
+   fi
+   local number="$1"
+   case "$number" in
+      +([0\-9]\fR popd \-n +"$number" > /dev/null ;;
+             *) echo "usage: pop {number}" > /dev/stderr ;;
+   esac
+   dirs \-v
+}
+.EE

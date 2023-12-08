@@ -1,0 +1,51 @@
+=====mc=====
+
+====NAME    ====
+mc - (cheatsheet) .
+
+====SYNOPSIS    ====
+Affiche le répertoire __dir1__ à gauche et __dir2__ à droite
+<code>
+mc [dir1] [dir2]
+</code>
+
+Affiche le répertoire distant (ssh) __/some/path__ de la machine __host__
+<code>
+mc sh://user@host/some/path
+</code>
+
+====DESCRIPTION    ====
+
+===Raccourcis    ===
+
+<code>
+   Tab       : change de côté (gauche ←→ droite)
+   Insertion : sélectionne un fichier ou un répertoire
+   F7        : crée un répertoire
+   +         : sélectionne par motif (ex: *.doc)
+   Alt + .   : cache/révèle les fichiers cachés
+
+   F5        : copie du coté actif au coté passif
+   F6        : déplace/renomme du côté actif vers le côté passif
+   F8        : supprime
+
+   F3        : visualise un fichier
+   F4        : édite un fichier
+   F9        : sélectionne un menu
+   F10       : sort/quitte
+
+   Ctrl-x d  : compare le côté gauche au côté droit
+   Alt+i     : sélectionne le même répertoire sur l'autre côté
+</code>
+
+===Renommage par lot  ===
+
+exemple:
+<code>
+taper "+" puis "*.csv"      => mc sélectionne tous les fichiers *.csv
+taper "F6" puis 
+    "*.csv" dans le premier champ
+    "*.xls" dans le second champ
+                            => renomme tous les fichiers CSV en XLS
+</code>
+

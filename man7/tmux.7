@@ -1,0 +1,48 @@
+.TH tmux "7" "2023-12-08" "baldo/document" "cheatsheet"
+.SH NAME
+.PP
+tmux  \- (cheatsheet)
+.SH SYNOPSIS
+.EX
+tmux ls
+tmux attach
+tmux new \-s session_name
+.EE
+.SH DESCRIPTION
+.PP
+Ctrl\-B + 
+
+.SS
+Window
+.EX
+c     : create window
+,     : rename window
+0\-9   : select window 0\-9
+w     : select window from list
+&     : kill window
+.EE
+
+.SS
+Pane
+.EX
+"     : split horizontal
+%     : split vertical
+→↓    : move to pane left, down ...
+q     : pane index
+t     : clock
+!     : promote to window
+{}    : swap pane prev next
+C\-o   :
+M\-o   : rotate pane
+spc   : rotate layout
+alt → : resize pane
+x     : kill pane
+.EE
+
+.SS
+Session
+.EX
+$     : rename session
+()    : switch prev, next session
+d     : detach
+.EE

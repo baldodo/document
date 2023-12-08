@@ -1,0 +1,47 @@
+.TH mc "7" "2023-12-08" "baldo/document" "cheatsheet"
+.SH NAME
+.PP
+mc \- (cheatsheet) .
+.SH SYNOPSIS
+.PP
+Affiche le répertoire \fIdir1\fR à gauche et \fIdir2\fR à droite
+.EX
+mc [dir1] [dir2]
+.EE
+.PP
+Affiche le répertoire distant (ssh) \fI/some/path\fR de la machine \fIhost\fR
+.EX
+mc sh://user@host/some/path
+.EE
+.SH DESCRIPTION
+
+.SS
+Raccourcis
+.EX
+   Tab       : change de côté (gauche ←→ droite)
+   Insertion : sélectionne un fichier ou un répertoire
+   F7        : crée un répertoire
+   +         : sélectionne par motif (ex: *.doc)
+   Alt + .   : cache/révèle les fichiers cachés
+   F5        : copie du coté actif au coté passif
+   F6        : déplace/renomme du côté actif vers le côté passif
+   F8        : supprime
+   F3        : visualise un fichier
+   F4        : édite un fichier
+   F9        : sélectionne un menu
+   F10       : sort/quitte
+   Ctrl\-x d  : compare le côté gauche au côté droit
+   Alt+i     : sélectionne le même répertoire sur l'autre côté
+.EE
+
+.SS
+Renommage
+.PP
+exemple:
+.EX
+taper "+" puis "*.csv"      => mc sélectionne tous les fichiers \fI*.csv\fR
+taper "F6" puis 
+    "*.csv" dans le premier champ
+    "*.xls" dans le second champ
+                            => renomme tous les fichiers \fICSV\fR en \fIXLS\fR
+.EE

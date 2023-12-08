@@ -1,0 +1,98 @@
+=====Tuto_bash=====
+
+====NAME    ====
+tuto_bash - (cheatsheet) .
+
+====SYNOPSIS    ====
+tuto_bash
+
+====Déroulement    ====
+
+===Prompt : où suis-je ===
+
+Un élément souvent négligé le __prompt__ du shell doit permettre à chaque instant:
+- de savoir quel login est utilisé (simple utilisateur, root, admin applicatif ...)
+- où on se trouve : machine et répertoire courant.
+
+Il ne doit pas être trop imposant : pour peu qu'on soit profond dans l'arborescence des répertoires, qu'on ait un login à rallonge ou un hostname complet avec le domaine, on finit par ne plus avoir de place pour taper ses commandes.
+
+Même si c'est affaire de goût, je préconise un prompt sur 2 lignes:
+- 1ère ligne : login@machine: path
+- 2ème ligne : le numéro de la commande en cours
+
+<code>
+PS1="\u@\h: \w\n(\!)\$>"
+
+pierre.dupont@ma_machine: /var/log/rsyslog/machine42/apache2
+(11)> ls -l 
+
+</code>
+
+Si on met le prompt sur une seule ligne on risque d'avoir un truc dans le genre de :
+<code>
+
+PS1="\u@\h: \w \$"
+pierre.dupont@ma_machine: /var/log/rsyslog/machine42/apache2 $ ls -l
+</code>
+
+On peut atténuer le problème via la variable PROMPT_DIRTRIM
+<code>
+PROMPT_DIRTRIM=2
+PS1="\u@\h: \w \$"
+pierre.dupont@ma_machine: .../machine42/apache2 $ ls -l
+</code>
+le répertoire courant est tronqué, mais ça peut être suffisant.
+N'afficher que le dernière répertoire du path courant ne me parait pas exploitable.
+
+===Se déplacer dans les répertoires===
+
+^^commande^ce que ça fait^
+||cd - | revient au répertoire précédent|
+||push mon_dossier| sauve __mon_dossier__ dans la pile|
+||push|affiche la pile|
+||pushd ailleurs  | sauve le __répertoire courant__ et saute __ailleurs__ |
+||popd            | revient au répertoire précédent dans la pile |
+||pop 3           | retire le 3ème répertoire de la pile |
+||pop             |affiche la pile|
+||dirs -v         | affiche la pile |
+
+**pop** et **push** sont des extensions/fonctions de mon cru. **pushd** et **popd** sont des commandes internes de bash.
+
+Pour voir la documentation complète de __pushd__ et __popd__, taper : 
+<code>
+$> help pushd
+$> help popd
+</code>
+
+le code **simplifié** de la commande push est celui-ci :
+<code>
+push()
+{
+   if [ $# -eq 0 ]
+      then dirs -v; return
+   fi
+   local dest="$1"
+   if ! [ -d "$dest" ]
+      then echo "$dest introuvable" > /dev/stderr
+      return
+   fi
+   pushd -n "$(realpath "$dest")" > /dev/null
+   dirs -v
+}
+</code>
+
+celui de la commande pop est :
+<code>
+pop()
+{
+   if [ $# -eq 0 ]
+      then dirs -v; return
+   fi
+   local number="$1"
+   case "$number" in
+      +([0-9] popd -n +"$number" > /dev/null ;;
+             *) echo "usage: pop {number}" > /dev/stderr ;;
+   esac
+   dirs -v
+}
+</code>

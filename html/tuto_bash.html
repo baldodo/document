@@ -1,0 +1,144 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="style.css">
+<title>Tuto_bash</title>
+</head>
+<body>
+<h1>Tuto_bash</h1>
+<br/>
+<h2>NAME    </h2>
+<p>
+tuto_bash - (cheatsheet) .
+</p>
+<br/>
+<h2>SYNOPSIS    </h2>
+<p>
+tuto_bash
+</p>
+<br/>
+<h2>Déroulement    </h2>
+<br/>
+<h3>Prompt : où suis-je </h3>
+<br/>
+<p>
+Un élément souvent négligé le <u>prompt</u> du shell doit permettre à chaque instant:
+</p>
+<p>
+- de savoir quel login est utilisé (simple utilisateur, root, admin applicatif ...)
+</p>
+<p>
+- où on se trouve : machine et répertoire courant.
+</p>
+<br/>
+<p>
+Il ne doit pas être trop imposant : pour peu qu'on soit profond dans l'arborescence des répertoires, qu'on ait un login à rallonge ou un hostname complet avec le domaine, on finit par ne plus avoir de place pour taper ses commandes.
+</p>
+<br/>
+<p>
+Même si c'est affaire de goût, je préconise un prompt sur 2 lignes:
+</p>
+<p>
+- 1ère ligne : login@machine: path
+</p>
+<p>
+- 2ème ligne : le numéro de la commande en cours
+</p>
+<br/>
+<pre>
+PS1="\u@\h: \w\n(\!)\$>"
+
+pierre.dupont@ma_machine: /var/log/rsyslog/machine42/apache2
+(11)> ls -l 
+
+</pre>
+<br/>
+<p>
+Si on met le prompt sur une seule ligne on risque d'avoir un truc dans le genre de :
+</p>
+<pre>
+
+PS1="\u@\h: \w \$"
+pierre.dupont@ma_machine: /var/log/rsyslog/machine42/apache2 $ ls -l
+</pre>
+<br/>
+<p>
+On peut atténuer le problème via la variable PROMPT_DIRTRIM
+</p>
+<pre>
+PROMPT_DIRTRIM=2
+PS1="\u@\h: \w \$"
+pierre.dupont@ma_machine: .../machine42/apache2 $ ls -l
+</pre>
+<p>
+le répertoire courant est tronqué, mais ça peut être suffisant.
+</p>
+<p>
+N'afficher que le dernière répertoire du path courant ne me parait pas exploitable.
+</p>
+<br/>
+<h3>Se déplacer dans les répertoires</h3>
+<br/>
+<table>
+<tr><th></th><th>commande</th><th>ce que ça fait</th></tr>
+<tr><td></td><td>cd - </td><td> revient au répertoire précédent</td></tr>
+<tr><td></td><td>push mon_dossier</td><td> sauve <u>mon_dossier</u> dans la pile</td></tr>
+<tr><td></td><td>push</td><td>affiche la pile</td></tr>
+<tr><td></td><td>pushd ailleurs  </td><td> sauve le <u>répertoire courant</u> et saute <u>ailleurs</u> </td></tr>
+<tr><td></td><td>popd            </td><td> revient au répertoire précédent dans la pile </td></tr>
+<tr><td></td><td>pop 3           </td><td> retire le 3ème répertoire de la pile </td></tr>
+<tr><td></td><td>pop             </td><td>affiche la pile</td></tr>
+<tr><td></td><td>dirs -v         </td><td> affiche la pile </td></tr>
+<p>
+</table>
+</p>
+<br/>
+<p>
+<b>pop</b> et <b>push</b> sont des extensions/fonctions de mon cru. <b>pushd</b> et <b>popd</b> sont des commandes internes de bash.
+</p>
+<br/>
+<p>
+Pour voir la documentation complète de <u>pushd</u> et <u>popd</u>, taper : 
+</p>
+<pre>
+$> help pushd
+$> help popd
+</pre>
+<br/>
+<p>
+le code <b>simplifié</b> de la commande push est celui-ci :
+</p>
+<pre>
+push()
+{
+   if [ $# -eq 0 ]
+      then dirs -v; return
+   fi
+   local dest="$1"
+   if ! [ -d "$dest" ]
+      then echo "$dest introuvable" > /dev/stderr
+      return
+   fi
+   pushd -n "$(realpath "$dest")" > /dev/null
+   dirs -v
+}
+</pre>
+<br/>
+<p>
+celui de la commande pop est :
+</p>
+<pre>
+pop()
+{
+   if [ $# -eq 0 ]
+      then dirs -v; return
+   fi
+   local number="$1"
+   case "$number" in
+      +([0-9] popd -n +"$number" > /dev/null ;;
+             *) echo "usage: pop {number}" > /dev/stderr ;;
+   esac
+   dirs -v
+}
+</pre>
+</body></html>
