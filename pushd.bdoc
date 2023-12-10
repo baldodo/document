@@ -68,18 +68,21 @@ $> help pushd
 $> help popd
 #)
 
-=== Se déplacer dans les répertoires
+=== Récapitulatif
 
 <table> 2
-(|commande|ce que ça fait|)
-(|cd - | revient au répertoire précédent|)
-(|push mon_dossier| sauve ((mon_dossier)) dans la pile|)
-(|push|affiche la pile|)
-(|pushd ailleurs  | sauve le ((répertoire courant)) et saute ((ailleurs)) |)
-(|popd            | revient au répertoire précédent dans la pile |)
-(|pop 3           | retire le 3ème répertoire de la pile |)
-(|pop             |affiche la pile|)
-(|dirs -v         | affiche la pile |)
+(||commande|ce que ça fait|)
+(||cd - | revient au répertoire précédent|)
+(||cd | retourne à la maison|)
+(||cd ~ | retourne à la maison|)
+(||cd ~bob | va chez bob|)
+(||pushd ailleurs  | sauve le ((répertoire courant)) et saute ((ailleurs)) |)
+(||popd            | revient au répertoire précédent dans la pile |)
+(||dirs -v         | affiche la pile |)
+(||push mon_dossier| sauve ((mon_dossier)) dans la pile|)
+(||push|affiche la pile|)
+(||pop 3           | retire le 3ème répertoire de la pile |)
+(||pop             |affiche la pile|)
 </table>
 
 [[pushd]] et [[popd]] sont des commandes internes de bash.

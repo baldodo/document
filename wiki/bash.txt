@@ -1,0 +1,79 @@
+=====bash=====
+
+====NAME====
+bash - (cheatsheet).
+
+====SYNOPSIS====
+<code>
+bash
+</code>
+
+====DESCRIPTION====
+
+===Moving===
+<code>
+   (C-a) beginning-of-line
+   (C-e) end-of-line
+   (M-f) forward-word
+   (M-b) backward-word
+   (C-l) clear-screen
+</code>
+
+===History===
+<code>
+   (M-<) beginning-of-history
+   (M->) end-of-history
+   (C-r) reverse-search-history
+   (C-s) forward-search-history
+   (M-C-e) shell-expand-line
+   (M-., M-_) insert-last-argument
+   (C-xC-e) edit-and-execute-command
+</code>
+
+===Text===
+<code>
+   (M-u) upcase-word
+   (M-l) downcase-word
+   (M-c) capitalize-word
+</code>
+
+===Killing===
+<code>
+   (C-k) kill-line
+   (C-x Rubout) backward-kill-line
+   (C-u) unix-line-discard
+   (M-d) kill-word
+   (M-Rubout) backward-kill-word
+   (C-w) unix-word-rubout
+</code>
+
+===Numeric Arguments===
+<code>
+   (M-0, M-1, ..., M--) digit-argument
+</code>
+
+===Completing===
+<code>
+   (TAB) complete
+   (M-?) possible-completions
+   (C-x /) possible-filename-completions
+   (M-~) complete-username
+   (C-x ~) possible-username-completions
+   (M-$) complete-variable
+   (C-x $) possible-variable-completions
+   (M-@) complete-hostname
+   (C-x @) possible-hostname-completions
+</code>
+
+===Miscellaneous===
+<code>
+   (C-x C-r) re-read-init-file
+   (C-g) abort
+   (C-_, C-x C-u) undo
+   (C-]) character-search
+   (M-C-]) character-search-backward
+   (M-#) insert-comment
+   (M-g) glob-complete-word
+   (C-x C-v) display-shell-version
+</code>
+

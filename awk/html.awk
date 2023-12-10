@@ -28,15 +28,18 @@ BEGIN {
 /<table>/ { first=1; print $1; next}
 /^\(\|/ { 
    if (!first) {
-      sub("\\(|","<tr><td>")
+      sub("\\(\\|\\|","<tr><td class=\"code\">")
+      sub("\\(\\|","<tr><td>")
       sub("\\|\\)","</td></tr>")
+      gsub("\\|\\|","</td><td class=\"code\">")
       gsub("\\|","</td><td>")
          gsub("\\[\\[","<b>")
          gsub("\\]\\]","</b>")
          gsub("\\(\\(","<u>")
          gsub("\\)\\)","</u>")
    } else {
-      sub("\\(|","<tr><th>")
+      sub("\\(\\|\\|","<tr><th class=\"code\">")
+      sub("\\(\\|","<tr><th>")
       sub("\\|\\)","</th></tr>")
       gsub("\\|","</th><th>")
       first=0

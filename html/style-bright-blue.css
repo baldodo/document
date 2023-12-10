@@ -4,7 +4,9 @@
        pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
        table   { margin-top: 0; margin-bottom: 0; vertical-align: top; border:0px  solid; border-collapse: collapse; }
        th { border-bottom:1px solid #000; background-color:#004080; color:white; padding:10px; text-align:left;}
+       th.code { font-family:mono,"Liberation Mono"; }
        td   { border-top:1px solid; border-bottom:1px solid #000; padding:10px; text-align:left; }
+       td.code { font-family:mono,"Liberation Mono"; }
        tr:nth-child(even) { background-color:#f0f0ff; }
        tr:hover { background-color: grey; color:white;}
        h1      { text-align: center; }

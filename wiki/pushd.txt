@@ -68,17 +68,20 @@ $> help pushd
 $> help popd
 </code>
 
-===Se déplacer dans les répertoires===
+===Récapitulatif===
 
-^^commande^ce que ça fait^
-||cd - | revient au répertoire précédent|
-||push mon_dossier| sauve __mon_dossier__ dans la pile|
-||push|affiche la pile|
-||pushd ailleurs  | sauve le __répertoire courant__ et saute __ailleurs__ |
-||popd            | revient au répertoire précédent dans la pile |
-||pop 3           | retire le 3ème répertoire de la pile |
-||pop             |affiche la pile|
-||dirs -v         | affiche la pile |
+^^^commande^ce que ça fait^
+|||cd - | revient au répertoire précédent|
+|||cd | retourne à la maison|
+|||cd ~ | retourne à la maison|
+|||cd ~bob | va chez bob|
+|||pushd ailleurs  | sauve le __répertoire courant__ et saute __ailleurs__ |
+|||popd            | revient au répertoire précédent dans la pile |
+|||dirs -v         | affiche la pile |
+|||push mon_dossier| sauve __mon_dossier__ dans la pile|
+|||push|affiche la pile|
+|||pop 3           | retire le 3ème répertoire de la pile |
+|||pop             |affiche la pile|
 
 **pushd** et **popd** sont des commandes internes de bash.
 **pop** et **push** sont des extensions/fonctions de mon cru; ce sont des versions simplifiées de pushd et popd ... qui utilisent pushd et popd en interne.
