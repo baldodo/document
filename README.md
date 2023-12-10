@@ -1,7 +1,7 @@
 
 # Doc generator
 
-Will generate html, man pages and mediawiki from the "bdoc" format which is inspired by the asciidoc format ... but different and much simpler.
+Will generate html, man pages and mediawiki from the "bdoc" format which is inspired by the asciidoc format ... but different and much basic/simpler.
 
 ## Dependancies:
 - awk 

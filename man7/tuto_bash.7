@@ -1,4 +1,4 @@
-.TH Tuto_bash "7" "2023-12-08" "baldo/document" "cheatsheet"
+.TH Tuto_bash "7" "2023-12-10" "baldo/document" "cheatsheet"
 .SH NAME
 .PP
 tuto_bash \- (cheatsheet) .
@@ -8,7 +8,7 @@ tuto_bash
 .SH Déroulement
 
 .SS
-Prompt
+Prompt : où suis-je
 .PP
 Un élément souvent négligé le \fIprompt\fR du shell doit permettre à chaque instant:
 .PP
@@ -25,12 +25,15 @@ Même si c'est affaire de goût, je préconise un prompt sur 2 lignes:
 \- 2ème ligne : le numéro de la commande en cours
 .EX
 PS1="\u@\h: \w\n(\!)\$>"
+
 pierre.dupont@ma_machine: /var/log/rsyslog/machine42/apache2
 (11)> ls \-l 
+
 .EE
 .PP
 Si on met le prompt sur une seule ligne on risque d'avoir un truc dans le genre de :
 .EX
+
 PS1="\u@\h: \w \$"
 pierre.dupont@ma_machine: /var/log/rsyslog/machine42/apache2 $ ls \-l
 .EE
@@ -47,7 +50,7 @@ le répertoire courant est tronqué, mais ça peut être suffisant.
 N'afficher que le dernière répertoire du path courant ne me parait pas exploitable.
 
 .SS
-Se
+Se déplacer dans les répertoires
 .TS
 tab(|) allbox;
 l l .

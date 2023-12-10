@@ -1,9 +1,11 @@
+@include "awk/from.awk"
+
 BEGIN {
    today=strftime("%F",systime())
 }
-/^\s*$/ { next }
+/^\s*$/ { if (code) { print "" } next }
 /^= / {
-   cmd=$2
+   cmd=from(2)
    cat="\"7\""
    cmd_src="baldo/document"
    cmd_cat="cheatsheet"
@@ -11,12 +13,12 @@ BEGIN {
    next
 }
 /^== / {
-   print ".SH "$2
+   print ".SH "from(2)
    next
 }
 /^=== / {
    print "\n.SS"
-   print $2
+   print from(2)
    next
 }
 /^\(#/ { print ".EX" ; code=1; next }

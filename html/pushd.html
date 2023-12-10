@@ -1,0 +1,118 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="style.css">
+<title>pushd-popd</title>
+</head>
+<body>
+<h1>pushd-popd</h1>
+<br/>
+<h2>NAME</h2>
+<p>
+pushd, popd - (tutorial) .
+</p>
+<br/>
+<h2>SYNOPSIS</h2>
+<br/>
+<p>
+pushd <u>/some/path</u>
+</p>
+<p>
+popd
+</p>
+<br/>
+<h2>DESCRIPTION</h2>
+<br/>
+<p>
+Généralement pour se déplacer dans les répertoires, on utilise :
+</p>
+<pre>
+
+smith:~
+$> cd /some/very/long/and/complex/path
+
+smith:/some/very/long/and/complex/path
+$> cd /home
+
+smith:/home
+$> cd smith
+
+smith:/home/smith
+$> cd /some
+
+smith:/some
+$> cd very/long/and/complex/path
+
+smith:/some/very/long/and/complex/path
+$> 
+</pre>
+<br/>
+<p>
+En gros on rentre le path complet après la commande <u>cd</u> et ce, plusieurs fois.
+</p>
+<p>
+Si on alterne entre 2 ou 3 répertoires, c'est très innefficace.
+</p>
+<br/>
+<p>
+Une première solution est d'utiliser les commandes internes du bash, <u>pushd</u> et <u>popd</u>
+</p>
+<br/>
+<h3>pushd, popd</h3>
+<br/>
+<p>
+On peut faire l'équivalent de la suite de "cd" précédente ainsi :
+</p>
+<br/>
+<pre>
+smith:~
+$> pushd /some/very/long/and/complex/path
+
+smith:/some/very/long/and/complex/path
+$> pushd .
+
+smith:/some/very/long/and/complex/path
+$> cd ~2
+
+smith:~
+$> cd ~1
+
+smith:/some/very/long/and/complex/path
+$> dirs -v
+0: /some/very/long/and/complex/path
+1: /some/very/long/and/complex/path
+2: ~
+
+</pre>
+<br/>
+<p>
+Pour voir la documentation complète de <u>pushd</u> et <u>popd</u>, taper : 
+</p>
+<pre>
+$> help pushd
+$> help popd
+</pre>
+<br/>
+<h3>Se déplacer dans les répertoires</h3>
+<br/>
+<table>
+<tr><th></th><th>commande</th><th>ce que ça fait</th></tr>
+<tr><td></td><td>cd - </td><td> revient au répertoire précédent</td></tr>
+<tr><td></td><td>push mon_dossier</td><td> sauve <u>mon_dossier</u> dans la pile</td></tr>
+<tr><td></td><td>push</td><td>affiche la pile</td></tr>
+<tr><td></td><td>pushd ailleurs  </td><td> sauve le <u>répertoire courant</u> et saute <u>ailleurs</u> </td></tr>
+<tr><td></td><td>popd            </td><td> revient au répertoire précédent dans la pile </td></tr>
+<tr><td></td><td>pop 3           </td><td> retire le 3ème répertoire de la pile </td></tr>
+<tr><td></td><td>pop             </td><td>affiche la pile</td></tr>
+<tr><td></td><td>dirs -v         </td><td> affiche la pile </td></tr>
+<p>
+</table>
+</p>
+<br/>
+<p>
+<b>pushd</b> et <b>popd</b> sont des commandes internes de bash.
+</p>
+<p>
+<b>pop</b> et <b>push</b> sont des extensions/fonctions de mon cru; ce sont des versions simplifiées de pushd et popd ... qui utilisent pushd et popd en interne.
+</p>
+</body></html>

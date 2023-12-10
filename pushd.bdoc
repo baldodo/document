@@ -1,0 +1,86 @@
+= pushd-popd
+
+== NAME
+pushd, popd - (tutorial) .
+
+== SYNOPSIS
+
+pushd ((/some/path))
+popd
+
+== DESCRIPTION
+
+Généralement pour se déplacer dans les répertoires, on utilise :
+(#
+
+smith:~
+$> cd /some/very/long/and/complex/path
+
+smith:/some/very/long/and/complex/path
+$> cd /home
+
+smith:/home
+$> cd smith
+
+smith:/home/smith
+$> cd /some
+
+smith:/some
+$> cd very/long/and/complex/path
+
+smith:/some/very/long/and/complex/path
+$> 
+#)
+
+En gros on rentre le path complet après la commande ((cd)) et ce, plusieurs fois.
+Si on alterne entre 2 ou 3 répertoires, c'est très innefficace.
+
+Une première solution est d'utiliser les commandes internes du bash, ((pushd)) et ((popd))
+
+=== pushd, popd
+
+On peut faire l'équivalent de la suite de "cd" précédente ainsi :
+
+(#
+smith:~
+$> pushd /some/very/long/and/complex/path
+
+smith:/some/very/long/and/complex/path
+$> pushd .
+
+smith:/some/very/long/and/complex/path
+$> cd ~2
+
+smith:~
+$> cd ~1
+
+smith:/some/very/long/and/complex/path
+$> dirs -v
+0: /some/very/long/and/complex/path
+1: /some/very/long/and/complex/path
+2: ~
+
+#)
+
+Pour voir la documentation complète de ((pushd)) et ((popd)), taper : 
+(#
+$> help pushd
+$> help popd
+#)
+
+=== Se déplacer dans les répertoires
+
+<table> 2
+(|commande|ce que ça fait|)
+(|cd - | revient au répertoire précédent|)
+(|push mon_dossier| sauve ((mon_dossier)) dans la pile|)
+(|push|affiche la pile|)
+(|pushd ailleurs  | sauve le ((répertoire courant)) et saute ((ailleurs)) |)
+(|popd            | revient au répertoire précédent dans la pile |)
+(|pop 3           | retire le 3ème répertoire de la pile |)
+(|pop             |affiche la pile|)
+(|dirs -v         | affiche la pile |)
+</table>
+
+[[pushd]] et [[popd]] sont des commandes internes de bash.
+[[pop]] et [[push]] sont des extensions/fonctions de mon cru; ce sont des versions simplifiées de pushd et popd ... qui utilisent pushd et popd en interne.

@@ -1,14 +1,14 @@
 =====Tuto_bash=====
 
-====NAME    ====
+====NAME====
 tuto_bash - (cheatsheet) .
 
-====SYNOPSIS    ====
+====SYNOPSIS====
 tuto_bash
 
-====Déroulement    ====
+====Déroulement====
 
-===Prompt : où suis-je ===
+===Prompt : où suis-je===
 
 Un élément souvent négligé le __prompt__ du shell doit permettre à chaque instant:
 - de savoir quel login est utilisé (simple utilisateur, root, admin applicatif ...)

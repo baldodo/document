@@ -1,9 +1,9 @@
 =====mc=====
 
-====NAME    ====
+====NAME====
 mc - (cheatsheet) .
 
-====SYNOPSIS    ====
+====SYNOPSIS====
 Affiche le répertoire __dir1__ à gauche et __dir2__ à droite
 <code>
 mc [dir1] [dir2]
@@ -14,9 +14,9 @@ Affiche le répertoire distant (ssh) __/some/path__ de la machine __host__
 mc sh://user@host/some/path
 </code>
 
-====DESCRIPTION    ====
+====DESCRIPTION====
 
-===Raccourcis    ===
+===Raccourcis===
 
 <code>
    Tab       : change de côté (gauche ←→ droite)
@@ -38,7 +38,7 @@ mc sh://user@host/some/path
    Alt+i     : sélectionne le même répertoire sur l'autre côté
 </code>
 
-===Renommage par lot  ===
+===Renommage par lot===
 
 exemple:
 <code>

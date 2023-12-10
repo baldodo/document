@@ -1,0 +1,89 @@
+.TH pushd-popd "7" "2023-12-10" "baldo/document" "cheatsheet"
+.SH NAME
+.PP
+pushd, popd \- (tutorial) .
+.SH SYNOPSIS
+.PP
+pushd \fI/some/path\fR
+.PP
+popd
+.SH DESCRIPTION
+.PP
+Généralement pour se déplacer dans les répertoires, on utilise :
+.EX
+
+smith:~
+$> cd /some/very/long/and/complex/path
+
+smith:/some/very/long/and/complex/path
+$> cd /home
+
+smith:/home
+$> cd smith
+
+smith:/home/smith
+$> cd /some
+
+smith:/some
+$> cd very/long/and/complex/path
+
+smith:/some/very/long/and/complex/path
+$> 
+.EE
+.PP
+En gros on rentre le path complet après la commande \fIcd\fR et ce, plusieurs fois.
+.PP
+Si on alterne entre 2 ou 3 répertoires, c'est très innefficace.
+.PP
+Une première solution est d'utiliser les commandes internes du bash, \fIpushd\fR et \fIpopd\fR
+
+.SS
+pushd, popd
+.PP
+On peut faire l'équivalent de la suite de "cd" précédente ainsi :
+.EX
+smith:~
+$> pushd /some/very/long/and/complex/path
+
+smith:/some/very/long/and/complex/path
+$> pushd .
+
+smith:/some/very/long/and/complex/path
+$> cd ~2
+
+smith:~
+$> cd ~1
+
+smith:/some/very/long/and/complex/path
+$> dirs \-v
+0: /some/very/long/and/complex/path
+1: /some/very/long/and/complex/path
+2: ~
+
+.EE
+.PP
+Pour voir la documentation complète de \fIpushd\fR et \fIpopd\fR, taper : 
+.EX
+$> help pushd
+$> help popd
+.EE
+
+.SS
+Se déplacer dans les répertoires
+.TS
+tab(|) allbox;
+l l .
+commande|ce que ça fait
+cd \- | revient au répertoire précédent
+push mon_dossier| sauve \fImon_dossier\fR dans la pile
+push|affiche la pile
+pushd ailleurs  | sauve le \fIrépertoire courant\fR et saute \fIailleurs\fR 
+popd            | revient au répertoire précédent dans la pile 
+pop 3           | retire le 3ème répertoire de la pile 
+pop             |affiche la pile
+dirs \-v         | affiche la pile 
+.TE
+.PP
+\fBpushd\fR et \fBpopd\fR sont des commandes internes de bash.
+.PP
+\fBpop\fR et \fBpush\fR sont des extensions/fonctions de mon cru; ce sont des versions simplifiées de pushd et popd ... qui utilisent pushd et popd en interne.

@@ -1,18 +1,19 @@
+@include "awk/from.awk"
 BEGIN {
    today=strftime("%F",systime())
 }
 /^\s*$/ { print ""; next }
 /^= / {
-   cmd=$2
+   cmd=from(2)
    print "=====" cmd "====="
    next
 }
 /^== / {
-   print "===="$2" "$3" "$4" "$5" "$6"===="
+   print "===="from(2)"===="
    next
 }
 /^=== / {
-   print "==="$2" "$3" "$4" "$5" "$6"==="
+   print "==="from(2)"==="
    next
 }
 /^\(#/ { print "<code>"; code=1; next }

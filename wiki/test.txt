@@ -1,12 +1,12 @@
 =====test=====
 
-====NAME    ====
+====NAME====
 test - (cheatsheet) .
 
-====SYNOPSIS    ====
+====SYNOPSIS====
 test
 
-====DESCRIPTION    ====
+====DESCRIPTION====
 ^^Numéro^Libellé^Extra^Trop^
 ||1|des **trucs**|en plus|++|
 ||2|des __machins__|en moins|--|

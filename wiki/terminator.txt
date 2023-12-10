@@ -1,14 +1,14 @@
 =====terminator=====
 
-====NAME    ====
+====NAME====
 terminator - (cheatsheet) 
 
-====SYNOPSIS    ====
+====SYNOPSIS====
 terminator
 
-====DESCRIPTION    ====
+====DESCRIPTION====
 
-===Group/Broadcast    ===
+===Group/Broadcast===
 <code>
   Super+g       : group all
   Super+Sh+g    : end group
@@ -18,21 +18,21 @@ terminator
   Alt+g         : broadcast group
   Alt+o         : end broadcast
 </code>
-===Panneau/Terminal    ===
+===Panneau/Terminal===
 <code>
    Ctrl-Sh-o     : split horizontal
    Ctrl-Sh-e     : split vertical
    Ctrl-Sh-w     : close panneau/terminal
    Ctrl-Alt-x    : rename panneau
 </code>
-===Tab    ===
+===Tab===
 <code>
    Ctrl-Sh-t     : new tab
    Ctrl-Alt-t    : rename tab
    Dbl-Click     : rename tab
    Ctrl-Sh-q     : quit all
 </code>
-===Navigation    ===
+===Navigation===
 <code>
    Alt-→↓        : move to panel
    Ctrl-Sh-n     : move to next panel
@@ -43,7 +43,7 @@ terminator
    Ctrl-PgUp     : move to previous tab
 </code>
 
-===Divers    ===
+===Divers===
 <code>
    Ctrl+sh+s    : show/hide scrollbar
    Ctrl+ +      : font size ++

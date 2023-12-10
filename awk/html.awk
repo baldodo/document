@@ -1,3 +1,4 @@
+@include "awk/from.awk"
 BEGIN {
    today=strftime("%F",systime())
    print "<!doctype html>"
@@ -7,7 +8,7 @@ BEGIN {
 }
 /^\s*$/ { if (!code) {print "<br/>"} else { print "" } next }
 /^= / {
-   cmd=$2
+   cmd=from(2)
    print "<title>"$2"</title>"
    print "</head>"
    print "<body>"
@@ -15,11 +16,11 @@ BEGIN {
    next
 }
 /^== / {
-   print "<h2>"$2" "$3" "$4" "$5" "$6"</h2>"
+   print "<h2>"from(2)"</h2>"
    next
 }
 /^=== / {
-   print "<h3>"$2" "$3" "$4" "$5" "$6"</h3>"
+   print "<h3>"from(2)"</h3>"
    next
 }
 /^\(#/ { print "<pre>"; code=1; next }

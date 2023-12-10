@@ -1,9 +1,9 @@
 =====tmux=====
 
-====NAME    ====
+====NAME====
 tmux  - (cheatsheet)
 
-====SYNOPSIS    ====
+====SYNOPSIS====
 
 <code>
 tmux ls
@@ -11,11 +11,11 @@ tmux attach
 tmux new -s session_name
 </code>
 
-====DESCRIPTION    ====
+====DESCRIPTION====
 
 Ctrl-B + 
 
-===Window    ===
+===Window===
 
 <code>
 c     : create window
@@ -26,7 +26,7 @@ w     : select window from list
 &     : kill window
 </code>
 
-===Pane    ===
+===Pane===
 
 <code>
 "     : split horizontal
@@ -44,7 +44,7 @@ alt → : resize pane
 x     : kill pane
 </code>
 
-===Session    ===
+===Session===
 
 <code>
 $     : rename session
