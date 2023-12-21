@@ -2,6 +2,7 @@ bash;bash -n {script.sh};test à froid : n'exécute rien, vérifie rapidement la
 bash;bash -x {script.sh};affiche chaque ligne exécutée du {script.sh}, debug basique
 bash;PS4='+ $LINENO:';avec bash -x, affiche les numéros de ligne, debug syntax
 bash;shellcheck {script.sh};cherche des erreurs dans {script.sh}, vérifie la syntaxe
+bash;history 7;liste les 7 dernières commandes
 font;fc-cache -f -r -v {directory};enregistre une nouvelle police
 font;fc-list;liste les polices
 keyboard;loadkeys fr;passe le clavier en azerty dans un terminal texte
@@ -32,6 +33,9 @@ text;sed '42,69d' {filename};affiche tout sauf les lignes 42 à 69 de {filename}
 text;sed -n '42,69p' {filename};affiche les lignes 42 à 69 de {filename}
 text;sed 's/toto/titi/g' {filename};remplace 'toto' par 'titi' dans {filename}
 text;sed -i 's/xx/zz/' {filename};remplace 'xx' par 'zz' dans {filename} et sauve {filename}
+text;csplit document.txt '/title/';découpe document.txt à chaque ligne contenant 'title'
+text;grep -f pattern_list.txt document.txt;cherche les pattern de pattern_list.txt dans document.txt
+text;grep -A 3 -B 2 toto document.txt;cherche toto dans document.txt et affiche 3 après, 2 avant
 time;date +'%F %T %z %Z';donne la date, l'heure, le fuseau horaire
 time;timedatectl;affiche le statut NTP et la timezone/fuseau horaire
 timezone;pushd /usr/share/zoneinfo;va voir les fichiers des fuseaux horaires
@@ -42,3 +46,11 @@ find;find -mmin -10;cherche les fichiers modifiées depuis moins de 10 minutes
 find;find -mtime -10;cherche les fichiers modifiées depuis moins de 10 jours
 find;find -size -1M;cherche les fichiers de moins de 1Mo
 find;find -size +1M;cherche les fichiers de plus de 1Mo
+hash;find -type f -print0 | xargs -0 -P 4 sha256sum;hashe tous les fichiers en utilisant 4 coeur/processeurs
+hash;md5sum * > files.md5;calcule le MD5 de tous les fichiers et sauve dans files.md5
+hash;sha1sum * > files.sha1;calcule le SHA-1 de tous les fichiers et sauve dans files.sha1
+hash;sha256sum * > files.sha256;calcule le SHA256 de tous les fichiers et sauve dans files.sha256
+hash;sha256sum -c files.sha256;vérifie les hashs contenus dans files.sha256
+hash;sha1sum -c files.sha1;vérifie les hashs contenus dans files.sha1
+hash;md5sum -c files.md5;vérifie les hashs contenus dans files.md5
+hash;grep -f hash_list.txt files.sha256;cherche les hash de hash_list dans files.sha256
