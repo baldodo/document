@@ -1,0 +1,39 @@
+bash;bash -n {script.sh};test à froid : n'exécute rien, vérifie rapidement la syntaxe
+bash;bash -x {script.sh};affiche chaque ligne exécutée du {script.sh}, debug basique
+bash;PS4='+ $LINENO:';avec bash -x, affiche les numéros de ligne, debug syntax
+bash;shellcheck {script.sh};cherche des erreurs dans {script.sh}, vérifie la syntaxe
+font;fc-cache -f -r -v {directory};enregistre une nouvelle police
+font;fc-list;liste les polices
+keyboard;loadkeys fr;passe le clavier en azerty dans un terminal texte
+keyboard;setxkbmap fr bepo;passe le clavier X Window en Bépo
+keyboard;setxkbmap {lang} {variant};passe le clavier X Window en {lang} {variant}
+man;apropos {subject};affiche les commandes correspondant à {subject}
+man;man -l {man_file};affiche le fichier {man_file}
+man;man groff_man;syntaxe manpage. peut ne pas être présent
+man;mandb -p -u -c .;met à jour la base des manpages
+man;wget;syntaxe manpage: https://man7.org/linux/man-pages/man7/groff_man.7.html
+mc;mc ftp://dupont@myserver.com/home/dupont;se connecte en ftp avec mc (filemanager)
+mc;mc sh://dupont@myserver.com/home/dupont;se connecte en ssh/scp avec mc (filemanager)
+mount;udisksctl mount -b /dev/{device};monte le device disk
+mount;udisksctl unmount -b /dev/{device};démonte le device disk
+terminal;echo -e '\e[0m';remet le texte en couleur par défaut
+terminal;echo -e '\e[1m';passe le texte en gras(1), italique(3), souligné(4), reverse(7)
+terminal;echo -e '\e[31m';passe le texte en rouge(31), vert(32), bleu(34)
+terminal;infocmp -L;affiche les séquences interprétées par le terminal
+terminal;reset;réinitialise le terminal en cas de scorie
+text;cat -A;affiche tous les caractères spéciaux
+text;column -s {sep} -t {filename};affiche le fichier en colonnes délimitées par {sep}
+text;iconv -f latin1 -t utf8 {filename};convertit de latin1 à utf8 le contenu du fichier {filename} et l'affiche
+text;iconv -l;affiche tous les encodages supportés par iconv
+text;iconv -t ascii//TRANSLIT {filename};convertit le contenu de {filename} en ascii en retirant les accents
+text;less -r [filename];affiche [filename] page par page en conservant la couleur
+text;pr -3 -t -w $COLUMNS {filename}| expand ;affiche le fichier {filename} sur 3 colonnes
+text;sed '42,69d' {filename};affiche tout sauf les lignes 42 à 69 de {filename}
+text;sed -n '42,69p' {filename};affiche les lignes 42 à 69 de {filename}
+text;sed 's/toto/titi/g' {filename};remplace 'toto' par 'titi' dans {filename}
+text;sed -i 's/xx/zz/' {filename};remplace 'xx' par 'zz' dans {filename} et sauve {filename}
+time;date +'%F %T %z %Z';donne la date, l'heure, le fuseau horaire
+time;timedatectl;affiche le statut NTP et la timezone/fuseau horaire
+timezone;pushd /usr/share/zoneinfo;va voir les fichiers des fuseaux horaires
+timezone;tzselect;donne les fuseaux horaires valide pour TZ
+webserver;python3 -m http.server {port};lance un serveur web
