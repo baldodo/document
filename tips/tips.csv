@@ -37,3 +37,8 @@ time;timedatectl;affiche le statut NTP et la timezone/fuseau horaire
 timezone;pushd /usr/share/zoneinfo;va voir les fichiers des fuseaux horaires
 timezone;tzselect;donne les fuseaux horaires valide pour TZ
 webserver;python3 -m http.server {port};lance un serveur web
+tar;tar czf archive.tgz -T list_of_files.txt;crée l'archive archive.tgz avec la liste de list_of_files.txt
+find;find -mmin -10;cherche les fichiers modifiées depuis moins de 10 minutes
+find;find -mtime -10;cherche les fichiers modifiées depuis moins de 10 jours
+find;find -size -1M;cherche les fichiers de moins de 1Mo
+find;find -size +1M;cherche les fichiers de plus de 1Mo
