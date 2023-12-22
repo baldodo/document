@@ -27,15 +27,16 @@ text;column -s {sep} -t {filename};affiche le fichier en colonnes délimitées p
 text;iconv -f latin1 -t utf8 {filename};convertit de latin1 à utf8 le contenu du fichier {filename} et l'affiche
 text;iconv -l;affiche tous les encodages supportés par iconv
 text;iconv -t ascii//TRANSLIT {filename};convertit le contenu de {filename} en ascii en retirant les accents
-text;less -r [filename];affiche [filename] page par page en conservant la couleur
+text;less -X -r [filename];affiche [filename] page par page en conservant la couleur
 text;pr -3 -t -w $COLUMNS {filename}| expand ;affiche le fichier {filename} sur 3 colonnes
 text;sed '42,69d' {filename};affiche tout sauf les lignes 42 à 69 de {filename}
 text;sed -n '42,69p' {filename};affiche les lignes 42 à 69 de {filename}
 text;sed 's/toto/titi/g' {filename};remplace 'toto' par 'titi' dans {filename}
 text;sed -i 's/xx/zz/' {filename};remplace 'xx' par 'zz' dans {filename} et sauve {filename}
-text;csplit document.txt '/title/';découpe document.txt à chaque ligne contenant 'title'
+text;csplit -f docu document.txt '/title/';découpe document.txt à chaque ligne contenant 'title'
 text;grep -f pattern_list.txt document.txt;cherche les pattern de pattern_list.txt dans document.txt
 text;grep -A 3 -B 2 toto document.txt;cherche toto dans document.txt et affiche 3 après, 2 avant
+text;python3 -c 'print("abcdef"[::-1])';inverse/reverse la chaine "abcdef" en "fedcba"
 time;date +'%F %T %z %Z';donne la date, l'heure, le fuseau horaire
 time;timedatectl;affiche le statut NTP et la timezone/fuseau horaire
 timezone;pushd /usr/share/zoneinfo;va voir les fichiers des fuseaux horaires

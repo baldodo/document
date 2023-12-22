@@ -15,7 +15,7 @@ tip() {
    echo "-------    -------                          -----------"
    grep -i "$1" "$TIPS" | column -s ';' -t | grep -i "$1" 
 }
-alias cheat='man -7'
+alias cheat='man 7'
 
 # update the tip "database"
 test -f tips.csv && cp -i tips.csv "$TIPS"
